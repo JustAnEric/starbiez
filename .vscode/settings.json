@@ -1,7 +1,10 @@
 {
-    "python.languageServer": "Pylance",
+    // Added by MicroPython & CircuitPython IntelliSense: this project is analysed
+    // against one board's modules, so other Python language servers are off here.
+    "python.languageServer": "None",
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingModuleSource": "none",
         "reportShadowedImports": "none"
-    }
+    },
+    "micropython-lsp.enable": true
 }
