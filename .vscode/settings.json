@@ -1,10 +1,11 @@
 {
     // Added by MicroPython & CircuitPython IntelliSense: this project is analysed
     // against one board's modules, so other Python language servers are off here.
-    "python.languageServer": "None",
+    "python.languageServer": "Default",
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingModuleSource": "none",
         "reportShadowedImports": "none"
     },
-    "micropython-lsp.enable": true
+    "micropython-lsp.enable": true,
+    "micropython-lsp.target": "circuitpython/seeed_xiao_esp32_s3_sense"
 }
