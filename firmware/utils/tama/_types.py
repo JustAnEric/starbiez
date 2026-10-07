@@ -16,8 +16,14 @@ ButtonState = namedtuple('ButtonState', [
 ])
 
 class Axis3(tuple):
-    def __init__(self, x: float, y: float, z: float):
-        super(tuple).__init__([x, y, z])
-        self.x = x
-        self.y = y
-        self.z = z
+    def __new__(cls, x: float, y: float, z: float):
+        return super().__new__(cls, (x, y, z))
+
+    @property
+    def x(self): return self[0]
+    
+    @property
+    def y(self): return self[1]
+    
+    @property
+    def z(self): return self[2]
