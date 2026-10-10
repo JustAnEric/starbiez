@@ -82,20 +82,39 @@ class Main:
             exit(3)
 
 
-        if globals.USE_DHT11:
+        if globals.USE_DHT:
             try:
-                logging.msg_boot(f"using DHT11 on pin {globals.DHT_PIN or 1}")
+                if globals.DHT_TYPE == "dht11":
+                    logging.msg_boot(f"using DHT11 on pin {globals.DHT_PIN or 1}")
 
-                self.DHT = adafruit_dht.DHT11(
-                    pin=globals.DHT_PIN or 1
-                )
-                self.dhtFound = True
+                    self.DHT = adafruit_dht.DHT11(
+                        pin=globals.DHT_PIN or 1
+                    )
+                    self.dhtFound = True
+                elif globals.DHT_TYPE == "dht21":
+                    logging.msg_boot(f"using DHT21 on pin {globals.DHT_PIN or 1}")
+                    
+                    self.DHT = adafruit_dht.DHT21(
+                        pin=globals.DHT_PIN or 1
+                    )
+                    self.dhtFound = True
+                elif globals.DHT_TYPE == "dht22":
+                    logging.msg_boot(f"using DHT22 on pin {globals.DHT_PIN or 1}")
+                    
+                    self.DHT = adafruit_dht.DHT22(
+                        pin=globals.DHT_PIN or 1
+                    )
+                    self.dhtFound = True
+                else:
+                    logging.msg_warn(f"DHT was enabled but it seems you did not configure a DHT_TYPE value! On the common Starbiez, this value is just the 'dht22' if that helps. ({globals.DHT_PIN or 1})")
+                    self.DHT = None
+                    self.dhtFound = False
             except:
-                logging.msg_warn(f"DHT11 was enabled but we could not find one connected to the pin selected! ({globals.DHT_PIN or 1})")
+                logging.msg_warn(f"DHT was enabled but we could not find one connected to the pin selected! ({globals.DHT_PIN or 1})")
                 self.DHT = None
                 self.dhtFound = False
         else:
-            logging.msg_boot(f"DHT11 was explicitly disabled, not loading")
+            logging.msg_boot(f"DHT was explicitly disabled, not loading")
             self.DHT = None
             self.dhtFound = False
 
@@ -291,17 +310,17 @@ class Main:
         self.heartAnimationEndsAt = 0
         self.playRunStartedAt = 0
 
-        if item.reaction == "NAP_REACTION":
+        if item.reaction == _types.PetReaction.NAP_REACTION:
             self.petJumpStartedAt = 0
             self.nappingPetX = self.pet_walking_x(now=now)
             self.nappingUntil = now + self._ms_to_s(globals.NAP_DURATION_MS)
-        elif item.reaction == "RUN_REACTION":
+        elif item.reaction == _types.PetReaction.RUN_REACTION:
             self.petJumpStartedAt = 0
             self.playRunStartedAt = now
             self.heartAnimationEndsAt = now + self.play_run_duration()
         else:
             self.petJumpStartedAt = now
-            if item.reaction == "HEART_REACTION":
+            if item.reaction == _types.PetReaction.HEART_REACTION:
                 self.heartAnimationEndsAt = now + self._ms_to_s(globals.HEARTS_DURATION_MS)
         
         self.currentView = "PET_VIEW"

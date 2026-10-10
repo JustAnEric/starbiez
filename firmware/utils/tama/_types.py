@@ -27,3 +27,9 @@ class Axis3(tuple):
     
     @property
     def z(self): return self[2]
+
+class PetReaction:
+    NAP_REACTION = 0
+    RUN_REACTION = 1
+    JUMP_REACTION = 2
+    HEART_REACTION = 3

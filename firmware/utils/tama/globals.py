@@ -1,9 +1,15 @@
-from utils.tama._types import MenuItem
+from utils.tama._types import MenuItem, PetReaction
+from typing import Literal
 
 ### EDIT THESE ###
 
-USE_DHT11 = True  # selected as true for most starbiez boards
+USE_DHT = True  # selected as true for most starbiez boards
 DHT_PIN = 1  # gpio pin
+
+# hints for YOUR configurability:
+#* AM2301 is the DHT21
+#* AM2302 is the DHT22
+DHT_TYPE: Literal['dht11', 'dht21', 'dht22'] = "" # you'll need a DHT with the traditional 4-pinout: VCC-DATA-X-GND
 
 I2C : dict[str, int] = {
     "OLED_ADDRESS": 0x3c,
@@ -26,10 +32,10 @@ STARTING_ENERGY = 75
 STARTING_FULLNESS = 65
 
 MENU_ITEMS : list[MenuItem] = [
-    MenuItem(label="NAP", joyChange=1, energyChange=18, fullnessChange=-4, reaction=NAP_REACTION),
-    MenuItem(label="PLAY", joyChange=12, energyChange=-9, fullnessChange=-5, reaction=RUN_REACTION),
-    MenuItem(label="FEED", joyChange=3, energyChange=2, fullnessChange=18, reaction=JUMP_REACTION),
-    MenuItem(label="PET", joyChange=7, energyChange=0, fullnessChange=0, reaction=HEART_REACTION),
+    MenuItem(label="NAP", joyChange=1, energyChange=18, fullnessChange=-4, reaction=PetReaction.NAP_REACTION),
+    MenuItem(label="PLAY", joyChange=12, energyChange=-9, fullnessChange=-5, reaction=PetReaction.RUN_REACTION),
+    MenuItem(label="FEED", joyChange=3, energyChange=2, fullnessChange=18, reaction=PetReaction.JUMP_REACTION),
+    MenuItem(label="PET", joyChange=7, energyChange=0, fullnessChange=0, reaction=PetReaction.HEART_REACTION),
 ]
 
 MENU_ITEM_COUNT = len(MENU_ITEMS)

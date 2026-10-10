@@ -2585,177 +2585,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Sensor:DHT11"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at -3.81 6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "DHT11"
-				(at 3.81 6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm"
-				(at 0 -10.16 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf"
-				(at 3.81 6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "3.3V to 5.5V, temperature and humidity module, DHT11"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "digital sensor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Aosong*DHT11*5.5x12.0*P2.54mm*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "DHT11_0_1"
-				(rectangle
-					(start -5.08 5.08)
-					(end 5.08 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "DHT11_1_1"
-				(pin power_in line
-					(at 0 7.62 270)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "DATA"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at -5.08 0 0)
-					(length 2.54)
-					(hide yes)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Switch:SW_Push"
 			(pin_numbers
 				(hide yes)
@@ -3602,6 +3431,18 @@
 		)
 		(uuid "aabcab33-4ffc-4750-b4b6-92261332e9c7")
 	)
+	(text "- oh my god, the DHT11, DHT21 and DHT22 are interchangeable with pinouts!\n- expandibility time!"
+		(exclude_from_sim no)
+		(at 170.434 76.708 0)
+		(effects
+			(font
+				(size 0.635 0.635)
+				(italic yes)
+			)
+			(justify left)
+		)
+		(uuid "e71d1041-d4b3-4065-a67e-2dbae94377d2")
+	)
 	(text "MPU6050"
 		(exclude_from_sim no)
 		(at 213.36 43.434 0)
@@ -3670,12 +3511,16 @@
 		(uuid "e9c94d40-272d-4aa4-802a-d3e04f533f88")
 	)
 	(no_connect
+		(at 232.41 87.63)
+		(uuid "ecd7d91c-2375-46c9-907c-9e59ebdbd352")
+	)
+	(no_connect
 		(at 232.41 59.69)
 		(uuid "f6e11ef5-8a11-4837-94ea-b1372a97edce")
 	)
 	(wire
 		(pts
-			(xy 226.06 105.41) (xy 228.6 102.87)
+			(xy 200.66 102.87) (xy 203.2 100.33)
 		)
 		(stroke
 			(width 0)
@@ -3702,6 +3547,16 @@
 			(type default)
 		)
 		(uuid "57417942-2427-4cfe-bfce-c9bd5e4a350a")
+	)
+	(wire
+		(pts
+			(xy 234.95 87.63) (xy 234.95 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d775f63-fc93-4578-98b9-2271d6179fd1")
 	)
 	(wire
 		(pts
@@ -3755,6 +3610,16 @@
 	)
 	(wire
 		(pts
+			(xy 241.3 97.79) (xy 237.49 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c516c2d4-6b07-463c-a307-29d618cd3397")
+	)
+	(wire
+		(pts
 			(xy 186.69 60.96) (xy 186.69 54.61)
 		)
 		(stroke
@@ -3765,7 +3630,7 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 105.41) (xy 226.06 105.41)
+			(xy 186.69 102.87) (xy 200.66 102.87)
 		)
 		(stroke
 			(width 0)
@@ -3888,16 +3753,6 @@
 			(justify right bottom)
 		)
 		(uuid "31242227-f5f7-4fd9-94aa-44cf408362e3")
-	)
-	(label "DHT11 DATA"
-		(at 207.01 87.63 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "31a1f056-ef3f-438a-8097-030519d80869")
 	)
 	(label "D12"
 		(at 55.88 91.44 180)
@@ -4115,8 +3970,8 @@
 		)
 		(uuid "8f297442-0155-45ed-b66a-5c8ae138425d")
 	)
-	(label "DHT11 DATA"
-		(at 212.09 105.41 0)
+	(label "DHT DATA"
+		(at 186.69 102.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4125,7 +3980,7 @@
 		)
 		(uuid "94e61f6d-8d11-4ebb-9bff-711dcd397ce2")
 	)
-	(label "DHT11 DATA"
+	(label "DHT DATA"
 		(at 55.88 59.69 180)
 		(effects
 			(font
@@ -4223,6 +4078,16 @@
 			(justify left bottom)
 		)
 		(uuid "dbb81322-4cd0-4400-ac10-a4bb4c27d126")
+	)
+	(label "DHT DATA"
+		(at 234.95 91.44 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right top)
+		)
+		(uuid "dbfa1785-0227-42d1-9724-275a59d25b18")
 	)
 	(label "D14"
 		(at 55.88 99.06 180)
@@ -4356,84 +4221,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 199.39 80.01 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "04ba00cd-a086-4600-a9e8-6a5720749dd9")
-		(property "Reference" "#PWR011"
-			(at 199.39 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 199.39 74.93 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN3810-9_TYPE_B"
-			(at 199.39 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 199.39 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 199.39 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d85a2bc5-2460-44ab-b4d9-64cbacb31ce9")
-		)
-		(instances
-			(project "starbie"
-				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
-					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 144.78 73.66 0)
 		(unit 1)
@@ -4508,84 +4295,6 @@
 			(project "starbie"
 				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
 					(reference "SW3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 199.39 95.25 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0d688f7b-2ea5-4849-9c71-7e5cafc3ffec")
-		(property "Reference" "#PWR012"
-			(at 199.39 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 199.39 100.33 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_DIP:DIP-24_W7.62mm"
-			(at 199.39 95.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 199.39 95.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 199.39 95.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "edf19e80-ec38-4cbf-b6eb-46992b4ff947")
-		)
-		(instances
-			(project "starbie"
-				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
-					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -5143,6 +4852,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 229.87 87.63 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2aba5c9b-8a06-4546-bb9a-0ec7c117de26")
+		(property "Reference" "#PWR017"
+			(at 229.87 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 229.87 92.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_DIP:DIP-24_W7.62mm"
+			(at 229.87 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 229.87 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 229.87 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7c2f310c-9670-410f-8a1b-c0aa4c9bf041")
+		)
+		(instances
+			(project "starbie"
+				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
 		(at 162.56 129.54 90)
 		(unit 1)
@@ -5366,7 +5153,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 228.6 95.25 0)
+		(at 203.2 92.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5377,7 +5164,7 @@
 		(fields_autoplaced yes)
 		(uuid "4a596830-2760-40e1-a726-161dc4bf62c5")
 		(property "Reference" "#PWR013"
-			(at 228.6 99.06 0)
+			(at 203.2 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5388,7 +5175,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 228.6 90.17 0)
+			(at 203.2 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5398,7 +5185,7 @@
 			)
 		)
 		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN3810-9_TYPE_B"
-			(at 228.6 95.25 0)
+			(at 203.2 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5409,7 +5196,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 228.6 95.25 0)
+			(at 203.2 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5420,7 +5207,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 228.6 95.25 0)
+			(at 203.2 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5444,7 +5231,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 228.6 99.06 0)
+		(at 203.2 96.52 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5455,7 +5242,7 @@
 		(fields_autoplaced yes)
 		(uuid "4ad60728-886c-4b8c-9f27-7e8926eaa7f4")
 		(property "Reference" "R1"
-			(at 231.14 97.7899 0)
+			(at 205.74 95.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5466,7 +5253,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 231.14 100.3299 0)
+			(at 205.74 97.7899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5477,7 +5264,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 226.822 99.06 90)
+			(at 201.422 96.52 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5488,7 +5275,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 228.6 99.06 0)
+			(at 203.2 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5499,7 +5286,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 228.6 99.06 0)
+			(at 203.2 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5598,6 +5385,84 @@
 			(project "starbie"
 				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 241.3 97.79 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6cc3b413-6562-4b46-8309-7162b57e9a51")
+		(property "Reference" "#PWR015"
+			(at 241.3 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 241.3 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN3810-9_TYPE_B"
+			(at 241.3 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 241.3 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 241.3 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "016eb2e1-7ed7-4572-8d96-1e5ccbdc470f")
+		)
+		(instances
+			(project "starbie"
+				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -6031,6 +5896,92 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x04_Pin")
+		(at 234.95 82.55 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8f0977bd-255c-4e28-b187-9d0e6fab2dd4")
+		(property "Reference" "J3"
+			(at 233.68 77.47 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "DHT"
+			(at 233.68 80.01 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical"
+			(at 234.95 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://core-electronics.com.au/attachments/DHT22.pdf"
+			(at 234.95 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 234.95 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "8996c5ef-8294-473d-a8bc-bcf719b5cfe6")
+		)
+		(pin "4"
+			(uuid "3fca05eb-b986-4c45-96e3-4f3366703517")
+		)
+		(pin "1"
+			(uuid "bc14940f-0099-4e6d-8f1d-db35767f9977")
+		)
+		(pin "3"
+			(uuid "8d8c36f0-0b2c-445c-8055-d11ce9d0e3ed")
+		)
+		(instances
+			(project "starbie"
+				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x04_Pin")
 		(at 186.69 49.53 270)
 		(unit 1)
 		(body_style 1)
@@ -6268,94 +6219,6 @@
 			(project "starbie"
 				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
 					(reference "SW1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Sensor:DHT11")
-		(at 199.39 87.63 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9bf60fdf-a3fa-4a17-9757-2f9b5cc11693")
-		(property "Reference" "U2"
-			(at 193.04 86.3599 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "DHT11"
-			(at 193.04 88.8999 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm"
-			(at 199.39 97.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf"
-			(at 203.2 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "3.3V to 5.5V, temperature and humidity module, DHT11"
-			(at 199.39 87.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "00c737b1-70ea-46ae-bed7-92fbc9e53a89")
-		)
-		(pin "1"
-			(uuid "fe180129-0210-479a-936e-121bb2467c8c")
-		)
-		(pin "4"
-			(uuid "70a9f5b5-2e2d-4763-9696-f01050fa8fcc")
-		)
-		(pin "2"
-			(uuid "c04b202a-5213-43c6-a9e1-e67f86181474")
-		)
-		(instances
-			(project "starbie"
-				(path "/91a60972-4f67-4283-a154-e75aa88c3b1a"
-					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -7253,7 +7116,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "10k"
 			(at 149.86 104.1399 0)
 			(show_name no)
 			(do_not_autoplace no)
