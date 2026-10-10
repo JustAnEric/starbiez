@@ -23,7 +23,7 @@
 | [0.100" (2.54 mm) Female Header: 2x8-Pin, Straight](https://core-electronics.com.au/0-100-2-54-mm-female-header-2x8-pin-straight.html) | For GPIO connectivity (if anyone wanted to use this as a devboard) | 1 | $2.16 | $2.16 | [Core Electronics](https://core-electronics.com.au/0-100-2-54-mm-female-header-2x8-pin-straight.html) |
 | [Mint Green MA Keycaps for MX Compatible Switches (5pcs)](https://core-electronics.com.au/mint-green-ma-keycaps-for-mx-compatible-switches-5-pack.html) | For topping off the Gateron Milky Pro Switches | 1 | $6.00 | $6.00 | [Core Electronics](https://core-electronics.com.au/mint-green-ma-keycaps-for-mx-compatible-switches-5-pack.html) |
 | **Parts subtotal** | — | — | — | **$31.71** | — |
-| **Tax & shipping** | — | — | — | **$4.37** | — |
-| **Total** | — | — | — | **$36.08** | — |
+| **Tax & shipping** | — | — | — | **$5.27** | — |
+| **Total** | — | — | — | **$36.98** | — |
 
-$28.92 left of the tier's funding.
+$28.02 left of the tier's funding.
