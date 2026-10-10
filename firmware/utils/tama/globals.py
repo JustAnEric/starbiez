@@ -9,7 +9,7 @@ DHT_PIN = 1  # gpio pin
 # hints for YOUR configurability:
 #* AM2301 is the DHT21
 #* AM2302 is the DHT22
-DHT_TYPE: Literal['dht11', 'dht21', 'dht22'] = "" # you'll need a DHT with the traditional 4-pinout: VCC-DATA-X-GND
+DHT_TYPE: Literal['dht11', 'dht21', 'dht22'] = "dht22" # you'll need a DHT with the traditional 4-pinout: VCC-DATA-X-GND
 
 I2C : dict[str, int] = {
     "OLED_ADDRESS": 0x3c,
