@@ -1,6 +1,6 @@
 from utils.tama import globals, _types, sprites
 from utils.starbie import is_starbie_board
-from utils import logging, jerryscript_js, path, webserver
+from utils import logging, path, webserver
 from typing import Union, Literal
 
 
@@ -16,7 +16,8 @@ import adafruit_dht
 import digitalio
 import json
 
-JSCRIPT_MODULES: list[dict] = []
+#JSCRIPT_MODULES: list[dict] = []
+MODULES : list[dict] = []
 
 class Main:
     def __init__(self):
@@ -579,6 +580,13 @@ class Main:
             self.draw_pet()
         self.DISPLAY.show()
 
+def run_script(p: str, a:Main):
+    script = __import__(p)
+
+    script.run(a)
+
+    return script
+
 if __name__ == "__main__":
     if not is_starbie_board():
         logging.msg_err("are you sure this is a starbie board?? we can't verify it is. if this is your own design of the starbie board, edit the settings.json file!")
@@ -614,6 +622,22 @@ if __name__ == "__main__":
 
     ws = webserver.WS(tama)
 
+    if not path.exists("./modules"):
+            os.mkdir("./modules")
+            logging.msg_boot("no python modules were found to load")
+    else:
+        f_listing = os.listdir("./modules")
+        logging.msg_boot(f"loading {len(f_listing)} python modules into memory...")
+
+        for entry in f_listing:
+            if not entry.lower().strip().endswith(".py"): continue
+
+            MODULES.append({
+                "filename": entry,
+                "module": run_script(entry.rsplit(".", 1)[0], tama)
+            })
+            logging.msg_boot(f"  loaded {entry} successfully")
+
     while True:
         tama.update_mpu()
         tama.update_dht()
@@ -630,3 +654,9 @@ if __name__ == "__main__":
         time.sleep(16/1000)
 
         ws.server.poll()
+
+        for m in MODULES:
+            module = m.get('module')
+            if not module: continue
+            if hasattr(module, "runloop"):
+                module.runloop(time.monotonic())

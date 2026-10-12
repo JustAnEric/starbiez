@@ -1,0 +1,3 @@
+# configure these if you use StarbieZ!
+CIRCUITPY_WIFI_SSID = ""
+CIRCUITPY_WIFI_PASSWORD = ""

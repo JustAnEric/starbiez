@@ -1,4 +1,4 @@
-def is_jerryscript_available() -> bool:
+"""def is_jerryscript_available() -> bool:
     # its just an import check, nothing special
     try:
         import jerryscript
@@ -12,4 +12,4 @@ def run_jscript_file(entry: str):
     import jerryscript
     ... # stub for now
 
-__all__ = ['run_jscript_file', 'is_jerryscript_available']
+__all__ = ['run_jscript_file', 'is_jerryscript_available']"""
