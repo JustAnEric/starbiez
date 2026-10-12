@@ -24,7 +24,7 @@
 | [Mint Green MA Keycaps for MX Compatible Switches (5pcs)](https://core-electronics.com.au/mint-green-ma-keycaps-for-mx-compatible-switches-5-pack.html) | For topping off the Gateron Milky Pro Switches | 1 | $6.00 | $6.00 | [Core Electronics](https://core-electronics.com.au/mint-green-ma-keycaps-for-mx-compatible-switches-5-pack.html) |
 | [JLCPCB Fab](https://jlcpcb.com) | Starbiez PCB | 1 | $11.95 | $11.95 | [JLCPCB](https://jlcpcb.com) |
 | **Parts subtotal** | — | — | — | **$43.13** | — |
-| **Tax & shipping** | — | — | — | **$15.63** | — |
-| **Total** | — | — | — | **$58.76** | — |
+| **Tax & shipping** | — | — | — | **$0.00** | — |
+| **Total** | — | — | — | **$43.13** | — |
 
-$6.24 left of the tier's funding.
+$21.87 left of the tier's funding.
