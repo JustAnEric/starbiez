@@ -151,6 +151,10 @@ Hope this helps!
 
 this took me the ENTIRETY of yesterday to build it and some of today to refine it, in retrospect I got up really early some days :| it took me about 1 hour and 22 minutes to write this writeup, according to Hackatime. I hope every viewer likes this project of mine!
 
+### Day 2!
+
+On day 2 of making Starbiez, I spent my time 
+
 ## Software
 
 I extended/am extending CircuitPython for this project for providing user access to an API, you can view my extensions to CircuitPython [here](https://github.com/JustAnEric/starbiez-circuitpython)! It's recommended to use this instead of normal CircuitPython on your ESP32-S3, as you probably won't have access to much easy modifications.

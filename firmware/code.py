@@ -1,7 +1,7 @@
 from utils.tama import globals, _types, sprites
 from utils.starbie import is_starbie_board
 from utils import logging, jerryscript_js, path, webserver
-from typing import Union
+from typing import Union, Literal
 
 
 import board
@@ -22,7 +22,7 @@ class Main:
     def __init__(self):
         self.buttons: dict[_types.ButtonState, digitalio.DigitalInOut] = {}
 
-        self.currentView : Union[str['PET_VIEW' | 'MENU_VIEW' | 'STATS_VIEW']] = ""
+        self.currentView : Literal['PET_VIEW', 'MENU_VIEW', 'STATS_VIEW', None] = None
         self.petState : _types.PetState = _types.PetState(
             globals.STARTING_JOY, globals.STARTING_ENERGY,
             globals.STARTING_FULLNESS,
@@ -31,10 +31,10 @@ class Main:
         self.mpuFound = False
         self.dhtFound = False
         self.acceleration = _types.Axis3(x=0.0, y=0.0, z=globals.STANDARD_GRAVITY)
-        self.temperatureC = -100000.0 # impossible in the real world
+        self.temperatureC: int | float | None = -100000.0 # impossible in the real world
         self.humidity = -100000.0
-        self.menuBall = [globals.MENU_CENTER_X, globals.MENU_CENTER_Y]
-        self.menuCenterAcceleration : list[float, float] = [0.0, 0.0]
+        self.menuBall: list[float] = [globals.MENU_CENTER_X, globals.MENU_CENTER_Y]
+        self.menuCenterAcceleration : list[float] = [0.0, 0.0]
         self.selectedMenuItem = -1
         self.lastMpuReadAt = 0.0
         self.lastDhtReadAt = 0.0
@@ -123,9 +123,9 @@ class Main:
             with open("./user-data.json", "r") as fp:
                 pets_data = json.load(fp)
                 fp.close()
-            self.petState.joy = pets_data.get('starbie',{}).get('joy', globals.STARTING_JOY)
-            self.petState.energy = pets_data.get('starbie',{}).get('energy', globals.STARTING_ENERGY)
-            self.petState.fullness = pets_data.get('starbie',{}).get('fullness', globals.STARTING_FULLNESS)
+            self.petState._replace(joy=pets_data.get('starbie',{}).get('joy', globals.STARTING_JOY))
+            self.petState._replace(energy=pets_data.get('starbie',{}).get('energy', globals.STARTING_ENERGY))
+            self.petState._replace(fullness=pets_data.get('starbie',{}).get('fullness', globals.STARTING_FULLNESS))
         else:
             # file doesn't exist
             payload = {
@@ -137,9 +137,9 @@ class Main:
             }
             with open("./user-data.json", "w") as fp:
                 json.dump(payload, fp, indent=4)
-            self.petState.joy = payload.get('starbie').get('joy')
-            self.petState.energy = payload.get('starbie').get('energy')
-            self.petState.fullness = pets_data.get('starbie').get('fullness')
+            self.petState._replace(joy=payload.get('starbie',{}).get('joy'))
+            self.petState._replace(energy=payload.get('starbie',{}).get('energy'))
+            self.petState._replace(fullness=payload.get('starbie',{}).get('fullness'))
 
     def save_pet(self):
         payload = {
@@ -153,9 +153,9 @@ class Main:
             json.dump(payload, fp, indent=4)
 
     def change_pet(self, joyChange: int, energyChange: int, fullnessChange: int):
-        self.petState.joy = self.constrain(self.petState.joy + joyChange, 0, 100)
-        self.petState.energy = self.constrain(self.petState.energy + energyChange, 0, 100)
-        self.petState.fullness = self.constrain(self.petState.fullness + fullnessChange, 0, 100)
+        self.petState._replace(joy=self.constrain(self.petState.joy + joyChange, 0, 100))
+        self.petState._replace(energy=self.constrain(self.petState.energy + energyChange, 0, 100))
+        self.petState._replace(fullness=self.constrain(self.petState.fullness + fullnessChange, 0, 100))
         self.save_pet()
 
     def add_button(self, pin: int):
@@ -181,10 +181,10 @@ class Main:
         rawState = button.realButton.value
         now = time.time()
         if rawState != button.lastRawState:
-            button.lastRawState = rawState
-            button.lastChangedAt = now
+            button._replace(lastRawState=rawState)
+            button._replace(lastChangedAt=now)
         if (rawState != button.stableState and now - button.lastChangedAt >= self._ms_to_s(globals.BUTTON_DEBOUNCE_MS)):
-            button.stableState = rawState
+            button._replace(stableState=rawState)
             return button.stableState == False
         return False
 
@@ -262,8 +262,8 @@ class Main:
         targetX = globals.MENU_CENTER_X + (xTilt / globals.MENU_TILT_LIMIT) * globals.MENU_BALL_X_RANGE
         targetY = globals.MENU_CENTER_Y + (yTilt / globals.MENU_TILT_LIMIT) * globals.MENU_BALL_Y_RANGE
 
-        menuBallX += (targetX - menuBallX) * 0.20
-        menuBallY += (targetY - menuBallY) * 0.20
+        self.menuBall[0] = (targetX - self.menuBall[0]) * 0.20
+        self.menuBall[1] += (targetY - self.menuBall[1]) * 0.20
 
         fbfXTilt = abs(xTilt)
         fbfYTilt = abs(yTilt)
@@ -279,7 +279,7 @@ class Main:
         if (not self.mpuFound or not self.MPU) or self.currentView != 'PET_VIEW':
             return
 
-        mag = self.sqrtf(self.acceleration.x * self.acceleration.x +
+        mag = math.sqrt(self.acceleration.x * self.acceleration.x +
                          self.acceleration.y * self.acceleration.y +
                          self.acceleration.z * self.acceleration.z)
         now = time.time()
@@ -329,6 +329,9 @@ class Main:
         button1 = self.get_button(pin=globals.BUTTON.get("BUTTON_ONE_PIN", 2))
         button2 = self.get_button(pin=globals.BUTTON.get("BUTTON_TWO_PIN", 3))
 
+        if not button1 or not button2:
+            return
+
         if self.was_button_pressed(button=button1):
             if self.currentView == "MENU_VIEW":
                 self.choose_menu_item()
@@ -338,7 +341,9 @@ class Main:
         if self.was_button_pressed(button=button2):
             self.currentView = "PET_VIEW" if self.currentView == "STATS_VIEW" else "STATS_VIEW"
 
-    def draw_heart(self, x: int, y: int):
+    def draw_heart(self, x: float, y: float):
+        if not self.DISPLAY:
+            return
         SSD1306_WHITE = 1
         self.DISPLAY.fill_rect(x - 2, y, 2, 2, SSD1306_WHITE)
         self.DISPLAY.fill_rect(x + 1, y, 2, 2, SSD1306_WHITE)
@@ -347,7 +352,7 @@ class Main:
         self.DISPLAY.fill_rect(x - 1, y + 5, 3, 1, SSD1306_WHITE)
         self.DISPLAY.pixel(x, y + 6, SSD1306_WHITE)
 
-    def draw_hearts(self, now: float, petX: int, petY: int):
+    def draw_hearts(self, now: float, petX: float, petY: float):
         """
         `now` in seconds
         """
@@ -359,15 +364,19 @@ class Main:
         self.draw_heart(petX + 10, petY - 3 - rise)
         self.draw_heart(petX + 22, petY - 9 - rise / 2)
 
-    def draw_sleep_zs(self, now: float, petX: int, petY: int):
+    def draw_sleep_zs(self, now: float, petX: float, petY: float):
         """
         `now` in seconds
         """
+        if not self.DISPLAY:
+            return
         rise = (now / 300) % 15
         self.DISPLAY.text("z", petX + 23, petY - 2 - rise)
         self.DISPLAY.text("z", petX + 28, petY - 8 - rise / 2)
 
     def draw_pet(self):
+        if not self.DISPLAY:
+            return
         SSD1306_WHITE = 1
         self.DISPLAY.fill(0)
         now = time.time()
@@ -394,7 +403,7 @@ class Main:
         asset_buf = adafruit_framebuf.FrameBuffer(
             sprites.PET_SPRITE_001,
             globals.PET_SPRITE_WIDTH, globals.PET_SPRITE_HEIGHT,
-            adafruit_framebuf.MHMSBFormat
+            adafruit_framebuf.MHMSB
         )
 
         self.DISPLAY.blit(asset_buf, petX, petY, SSD1306_WHITE)
@@ -403,7 +412,9 @@ class Main:
             self.draw_sleep_zs(now, petX, petY)
         self.draw_hearts(now, petX, petY)
 
-    def draw_round_rect(self, x: int, y: int, w: int, h: int, r, color, fill=False):
+    def draw_round_rect(self, x: float, y: float, w: int, h: int, r, color, fill=False):
+        if not self.DISPLAY:
+            return
         if r <= 0:
             if fill:
                 self.DISPLAY.fill_rect(x, y, w, h, color)
@@ -466,6 +477,8 @@ class Main:
                 d += 2 * (cy - cx) + 1
 
     def draw_circle(self, x0, y0, r, color, fill=False):
+        if not self.DISPLAY:
+            return
         # big math
         x = r
         y = 0
@@ -497,6 +510,8 @@ class Main:
                 err += 2 * (y - x) + 1
 
     def draw_menu_item(self, item: int):
+        if not self.DISPLAY:
+            return
         boxWidth = 33
         boxHeight = 12
         boxX = globals.MENU_ITEM_X[item] - boxWidth / 2
@@ -514,6 +529,8 @@ class Main:
         self.DISPLAY.text(globals.MENU_ITEMS[item].label, globals.MENU_ITEM_X[item] - labelLength * 3, globals.MENU_ITEM_Y[item] - 3, textColor)
 
     def draw_menu(self):
+        if not self.DISPLAY:
+            return
         self.DISPLAY.fill(0)
         self.DISPLAY.line(0, 0, globals.SCREEN_WIDTH - 1, globals.SCREEN_HEIGHT - 1, 1)
         self.DISPLAY.line(0, globals.SCREEN_HEIGHT - 1, globals.SCREEN_WIDTH - 1, 0, 1)
@@ -525,6 +542,8 @@ class Main:
         self.draw_circle(int(self.menuBall[0]), int(self.menuBall[1]), 4, 1, True)
 
     def draw_stat_bar(self, y: int, label: str, value: int):
+        if not self.DISPLAY:
+            return
         self.DISPLAY.text(label, 4, y, 1)
         self.DISPLAY.rect(48, y, 57, 8, 1)
         width = int((value * 55) / 100)
@@ -532,22 +551,26 @@ class Main:
         self.DISPLAY.text(value, 109, y, 1)
 
     def draw_stats(self):
+        if not self.DISPLAY:
+            return
         self.DISPLAY.fill(0)
         self.draw_stat_bar(5, "JOY", self.petState.joy)
         self.draw_stat_bar(20, "ENERGY", self.petState.energy)
         self.draw_stat_bar(35, "FULL", self.petState.fullness)
 
-        if self.temperatureC != -100000.0:
+        if self.temperatureC != -100000.0 and self.temperatureC != None:
             self.DISPLAY.text(f"TEMP {int(self.temperatureC)}C", 4, 53, 1)
         else:
             self.DISPLAY.text(f"TEMP --", 4, 53, 1)
 
-        if self.humidity != -100000.0:
+        if self.humidity != -100000.0 and self.humidity != None:
             self.DISPLAY.text(f"H {int(self.humidity)}%", 76, 53, 1)
         else:
             self.DISPLAY.text(f"H --", 76, 53, 1)
 
     def draw_current_view(self):
+        if not self.DISPLAY:
+            return
         if self.currentView == "MENU_VIEW":
             self.draw_menu()
         elif self.currentView == "STATS_VIEW":
@@ -561,24 +584,24 @@ if __name__ == "__main__":
         logging.msg_err("are you sure this is a starbie board?? we can't verify it is. if this is your own design of the starbie board, edit the settings.json file!")
         exit(2)
 
-    if not jerryscript_js.is_jerryscript_available():
-        logging.msg_warn("modularity was disabled... you won't be able to use the modules/ directory to write hooks on top of me!!")
-        logging.msg_warn("did you manage to flash the correct firmware.uf2 file to me? (https://github.com/JustAnEric/starbiez/blob/main/firmware/README.txt)")
-    else:
-        if not path.exists("./modules"):
-            os.mkdir("./modules")
-            logging.msg_boot("no JScript modules were found to load")
-        else:
-            f_listing = os.listdir("./modules")
-            logging.msg_boot(f"loading {len(f_listing)} JScript modules into memory...")
+    #if not jerryscript_js.is_jerryscript_available():
+    #    logging.msg_warn("modularity was disabled... you won't be able to use the modules/ directory to write hooks on top of me!!")
+    #    logging.msg_warn("did you manage to flash the correct firmware.uf2 file to me? (https://github.com/JustAnEric/starbiez/blob/main/firmware/README.txt)")
+    #else:
+    #    if not path.exists("./modules"):
+    #        os.mkdir("./modules")
+    #        logging.msg_boot("no JScript modules were found to load")
+    #    else:
+    #        f_listing = os.listdir("./modules")
+    #        logging.msg_boot(f"loading {len(f_listing)} JScript modules into memory...")
 
-            for entry in f_listing:
-                if not entry.lower().strip().endswith(".js"): continue
-                JSCRIPT_MODULES.append({
-                    "filename": entry,
-                    "module": jerryscript_js.run_jscript_file(entry)
-                })
-                logging.msg_boot(f"  loaded {entry} successfully")
+    #        for entry in f_listing:
+    #            if not entry.lower().strip().endswith(".js"): continue
+    #            JSCRIPT_MODULES.append({
+    #                "filename": entry,
+    #                "module": jerryscript_js.run_jscript_file(entry)
+    #            })
+    #            logging.msg_boot(f"  loaded {entry} successfully")
     
     logging.msg_boot("boot has finished")
 
@@ -588,6 +611,8 @@ if __name__ == "__main__":
     tama.add_button(globals.BUTTON.get("BUTTON_THREE_PIN",4))
     tama.load_pet()
     tama.draw_current_view()
+
+    ws = webserver.WS(tama)
 
     while True:
         tama.update_mpu()
@@ -602,4 +627,6 @@ if __name__ == "__main__":
 
         tama.draw_current_view()
 
-        time.sleep(16)
+        time.sleep(16/1000)
+
+        ws.server.poll()
