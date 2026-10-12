@@ -10,7 +10,7 @@
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
-| Week 1 | Tier 2 | 17.75h | 3 |
+| Week 1 | Tier 3 | 17.75h | 3 |
 
 ## Contents
 
@@ -102,13 +102,9 @@ In this session, I found out you could swap out the DHT11 sensor for ANY DHT sen
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/5L83T8pgt4C0kG6QB6wl2GpFHsDV2Xmw/6afac21c6bc067745eb4e15ec29d36500f63c5aace24f4a41b24f26a6aaf2395.png)
 
-I didn't expect to have a lot of troubles with compiling JerryScript or any other scripting into CIrcuitPython, so I will have to keep this functionality for later use when I figure out how to fix memory requirements by using PSRAM. I at least tried, but you still have to cut your losses sometimes. Maybe in a later revision I can get JerryScript working, I also tried to use MQuickJS for the ESP32 but the API didn't suit my needs with the fact you couldn't grab the stdout, stderr and stdin from the project (it would've been great in communicating with Python)
-
 But anyway, I'm now experimenting with some back art to put on there! This will be more refined later.
 
 ![starbieshwcs](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/5L83T8pgt4C0kG6QB6wl2GpFHsDV2Xmw/bca89ad559c14cff5ea261a5b8ab8e158d5f5d0b5d219a3c2ec95b80e4dfab39.png)
-
-For now, in my software, I will open up Starbiez to normal Python extensions instead of relying on a second bloat for the S3 Plus.
 
 ### 2026-10-11 – I gladly spent some time designing the back art for Starbiez! I also made it a lot more cleaner with the art on the silkscreen because I didn't know you could enter into the group of polygons that KiC
 
