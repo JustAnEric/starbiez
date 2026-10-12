@@ -623,8 +623,8 @@ if __name__ == "__main__":
     ws = webserver.WS(tama)
 
     if not path.exists("./modules"):
-            os.mkdir("./modules")
-            logging.msg_boot("no python modules were found to load")
+        os.mkdir("./modules")
+        logging.msg_boot("no python modules were found to load")
     else:
         f_listing = os.listdir("./modules")
         logging.msg_boot(f"loading {len(f_listing)} python modules into memory...")
