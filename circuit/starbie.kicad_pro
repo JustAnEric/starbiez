@@ -526,7 +526,7 @@
       "netlist": "",
       "plot": "./production/",
       "specctra_dsn": "",
-      "step": "",
+      "step": "starbiexz.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

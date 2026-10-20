@@ -1,6 +1,6 @@
 # StarbieZ (star-beez)
 
-[![](images/Screenshot%202026-10-06%20135725.v1.png)](images/Screenshot%202026-10-06%20135725.v1.png)
+[![](images/day2/Screenshot%202026-10-21%20074232.png)](images/day2/Screenshot%202026-10-21%20074232.png)
 
 Starbiez is a redo of the [Starbie](https://github.com/SharKingStudios/Starbie), and boy it packs *serious* power!
 
@@ -21,6 +21,25 @@ the outputs on this device are *pretty simple*:
 * buzzer/piezo
 
 you provide input to this project by literally just clicking the cherry MX keyboard switches... and the circuitpython software being packaged for this project is considerably extendable being based off of the C++/.INO software. (yes, I'm rewriting/have rewritten it to make it easier for extensions, welcome beginners!)
+
+## Bill of materials
+
+| Part | What it's for | Qty | Unit | Total | Vendor |
+| --- | --- | --- | --- | --- | --- |
+| [ESP32-S3 Plus](https://www.pakronics.com.au/products/seeed-studio-xiao-esp32s3-plus-20-gpios-2-4ghz-wifi-ble-5-0-8mb-psram-16mb-flash-esp32-s3-dual-core-battery-charge-supported-ss102010671) | Main loop, more GPIO | 1 | $11.50 | $11.50 | [Pakronics](https://www.pakronics.com.au/products/seeed-studio-xiao-esp32s3-plus-20-gpios-2-4ghz-wifi-ble-5-0-8mb-psram-16mb-flash-esp32-s3-dual-core-battery-charge-supported-ss102010671) |
+| [Gateron Milky Pro Switches (10pcs)](https://www.aliexpress.com/item/1005006425450443.html) | Switches and satisfying clicks | 1 | $1.06 | $1.06 | [AliExpress](https://www.aliexpress.com/item/1005006425450443.html) |
+| [White 128x64 OLED display](https://www.aliexpress.com/item/1005004355547926.html) | The face of Starbiez | 1 | $2.85 | $2.85 | [AliExpress](https://www.aliexpress.com/item/1005004355547926.html) |
+| [DHT22 Chip](https://core-electronics.com.au/dht22-temperature-and-relative-humidity-sensor-module.html) | For improved humidity sensing | 1 | $2.38 | $2.38 | [Core Electronics](https://core-electronics.com.au/dht22-temperature-and-relative-humidity-sensor-module.html) |
+| [MPU6050 3-axis IMU](https://www.aliexpress.com/item/1005007989748804.html) | For shaking Starbiez | 1 | $2.92 | $2.92 | [Core Electronics](https://www.aliexpress.com/item/1005007989748804.html) |
+| [600 Pack of 1/4 Watt 1% Resistors (30 values, 20 of each)](https://core-electronics.com.au/600-pack-of-1-4-watt-1-resistors-30-values-20-of-each.html) | For resistance in the circuit | 1 | $1.87 | $1.87 | [Core Electronics](https://core-electronics.com.au/600-pack-of-1-4-watt-1-resistors-30-values-20-of-each.html) |
+| [Light dependent resistor](https://core-electronics.com.au/light-dependent-resistor-ldr.html) | For helping Starbiez sleep | 1 | $0.22 | $0.22 | [Core Electronics](https://core-electronics.com.au/light-dependent-resistor-ldr.html) |
+| [Generic buzzer (⌀11 x 9)](https://core-electronics.com.au/piezo-buzzer.html) | For buzzing through menus (sound interactivity and accessibility) | 1 | $0.22 | $0.22 | [Core Electronics](https://core-electronics.com.au/piezo-buzzer.html) |
+| [0.100" (2.54 mm) Female Header: 2x8-Pin, Straight](https://core-electronics.com.au/0-100-2-54-mm-female-header-2x8-pin-straight.html) | For GPIO connectivity (if anyone wanted to use this as a devboard) | 1 | $2.16 | $2.16 | [Core Electronics](https://core-electronics.com.au/0-100-2-54-mm-female-header-2x8-pin-straight.html) |
+| [Mint Green MA Keycaps for MX Compatible Switches (5pcs)](https://core-electronics.com.au/mint-green-ma-keycaps-for-mx-compatible-switches-5-pack.html) | For topping off the Gateron Milky Pro Switches | 1 | $6.00 | $6.00 | [Core Electronics](https://core-electronics.com.au/mint-green-ma-keycaps-for-mx-compatible-switches-5-pack.html) |
+| [JLCPCB Fab](https://jlcpcb.com) | Starbiez PCB | 1 | $11.95 | $11.95 | [JLCPCB](https://jlcpcb.com) |
+| **Parts subtotal** | — | — | — | **$43.13** | — |
+| **Tax & shipping** | — | — | — | **$27.33** | — |
+| **Total** | — | — | — | **$70.46** | — |
 
 ## The process of building
 ### Day 1!
@@ -150,6 +169,26 @@ Hope this helps!
     ![](images/steps/8/Screenshot%202026-10-07%20090323.png)
 
 this took me the ENTIRETY of yesterday to build it and some of today to refine it, in retrospect I got up really early some days :| it took me about 1 hour and 22 minutes to write this writeup, according to Hackatime. I hope every viewer likes this project of mine!
+
+### Day 2
+
+I have swapped out the Claude star assets for my own as requested from Hack Club Half Life. It took about 45 minutes to draw the star assets in MS Paint.
+
+![](circuit/nomoreai.png)
+
+I then converted these black paths into an SVG using Inkscape...
+
+![](circuit/nomoreai.svg)
+
+And afterwards, I redone the design of the silkscreen by my two hands. This took about 25 minutes.
+
+![](images/day2/Screenshot%202026-10-21%20073814.png)
+
+I also added mounting holes in four places, as you can see.
+
+![](images/day2/Screenshot%202026-10-21%20074232.png)
+
+![](images/day2/Screenshot%202026-10-21%20074258.png)
 
 ## Software
 

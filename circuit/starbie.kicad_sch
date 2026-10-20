@@ -3431,7 +3431,7 @@
 		)
 		(uuid "aabcab33-4ffc-4750-b4b6-92261332e9c7")
 	)
-	(text "- oh my god, the DHT11, DHT21 and DHT22 are interchangeable with pinouts!\n- expandibility time!"
+	(text "- oh my, the DHT11, DHT21 and DHT22 are interchangeable with pinouts!\n- expandibility time!"
 		(exclude_from_sim no)
 		(at 170.434 76.708 0)
 		(effects
