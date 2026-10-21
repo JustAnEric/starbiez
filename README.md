@@ -190,6 +190,12 @@ I also added mounting holes in four places, as you can see.
 
 ![](images/day2/Screenshot%202026-10-21%20074258.png)
 
+### Final board renders (courtesy of JLC)
+
+![](images/day2/starbiez_sm_white_top.png)
+
+![](images/day2/starbiez_sm_white_bottom.png)
+
 ## Software
 
 I extended/am extending CircuitPython for this project for providing user access to an API, you can view my extensions to CircuitPython [here](https://github.com/JustAnEric/starbiez-circuitpython)! It's recommended to use this instead of normal CircuitPython on your ESP32-S3, as you probably won't have access to much easy modifications.
