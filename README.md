@@ -150,7 +150,7 @@ Hope this helps!
 
     ![](images/steps/7/Screenshot%202026-10-07%20001022.png)
 
-    (*sparkles*!!) The sparkles I got from Claude, I asked it to make a flat monochrome white sparkle SVG graphic I could use... I plastered it onto the board on all the corners.
+    (*sparkles*!!) The sparkles I got from Claude, I asked it to make a flat monochrome white sparkle SVG graphic I could use... I plastered it onto the board on all the corners. (***THIS GRAPHIC IS NOW OUTSIDE OF THE FINAL REVISION DUE TO HALF LIFE REQUIREMENTS***)
 
 8. Around this time, I was searching for good parts to use on AliExpress, but I found that shipping from China is a *little* bit too expensive for the grant I'm receiving. I then got a little distracted, still worrying myself about whether the light-dependent resistor I've wired up would be correct. More research got me to change it to a generic one, so here's the LDR part I recommend if anyone tries to build this project:
 
